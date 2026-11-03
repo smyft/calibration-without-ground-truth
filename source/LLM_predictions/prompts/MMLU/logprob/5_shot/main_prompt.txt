@@ -1,0 +1,5 @@
+Question: {task_query}
+A. {choiceA}
+B. {choiceB}
+C. {choiceC}
+D. {choiceD}

@@ -1,0 +1,130 @@
+# Never publish generated experiment results; keep them only on local storage.
+# This includes all intermediate JSONL files under results/.
+/results/
+/outputs/
+/runs/
+/wandb/
+/mlruns/
+# These directory names are reserved for generated artifacts at any depth.
+results/
+outputs/
+predictions/
+artifacts/
+diagnostics/
+
+# Downloaded datasets (do not ignore /data/: it contains data_loader.py).
+/datasets/
+/downloads/
+*.arrow
+*.parquet
+
+# Private project materials do not belong in the standalone code repository.
+/AGENTS.md
+/WORKFLOW.md
+/CLAUDE.md
+/IMPLEMENTATION_PLAN*.md
+/paper/
+/paper_snapshots/
+/rebuttals_*/
+/private_notes/
+/refernce_papers/
+
+# OS, editor, and local agent state
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.claude/
+.codex/
+*.swp
+*.swo
+*~
+
+# Python, notebook, and test caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.pyright/
+.ruff_cache/
+.ipynb_checkpoints/
+.coverage
+.coverage.*
+htmlcov/
+
+# Local environments and secrets
+.env
+.env.*
+!.env.example
+!.env.template
+.envrc
+.envrc.local
+/.local/
+*.local.json
+*.local.toml
+*.local.yaml
+*.local.yml
+local_settings.py
+credentials.json
+credentials.yaml
+credentials.yml
+secrets.json
+secrets.yaml
+secrets.yml
+token
+stored_tokens
+.netrc
+.pypirc
+.git-credentials
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+.venv/
+.venv-*/
+/.conda/
+venv/
+env/
+ENV/
+
+# Logs, caches, and build products
+*.log
+.cache/
+.huggingface/
+/hf_cache/
+/huggingface/
+build/
+dist/
+*.egg-info/
+
+# Model weights and checkpoints
+/checkpoints/
+/weights/
+/model_weights/
+/models/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.onnx
+*.h5
+*.hdf5
+*.gguf
+pytorch_model*.bin
+model*.bin
+
+# Bulky rendered and archive artifacts
+*.pdf
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+
+# Generated experiment tables: retain locally, exclude from Git.
+/src/calculating_standard_errors/appendix_all_baselines_CommonSenseQA.tex
+/src/calculating_standard_errors/appendix_all_baselines_MMLU.tex
+/src/calculating_standard_errors/appendix_all_baselines_MMLU_Redux.tex
