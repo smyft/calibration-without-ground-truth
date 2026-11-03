@@ -1,8 +1,10 @@
-# Calibration without ground truth
+# Calibration without Ground Truth
 
-Run the commands below from the repository root in the same Bash session.
+This repository contains the official implementation of our paper [Calibration without Ground Truth](https://arxiv.org/abs/2601.19862), accepted as a **NeurIPS 2026 Spotlight (1%)**.
 
 ## Conda environment
+
+Run the commands below from the repository root in the same Bash session.
 
 ```bash
 conda create -n calibration python=3.11.15 -y
