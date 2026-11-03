@@ -1,5 +1,4 @@
-# CPU calibration, baselines, metric analysis, data loading, and tests.
-# For CPU-only PyTorch installation, follow README.md before installing this file.
+# Shared dependencies for calibration, baselines, metric analysis, data loading, and tests.
 numpy==2.3.5
 scipy==1.17.1
 scikit-learn==1.9.1

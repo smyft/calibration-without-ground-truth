@@ -1,4 +1,4 @@
-# Full workflow: CPU analysis plus local GPU inference.
+# Full experiment workflow, including local GPU inference.
 # Versions are from the validated Python 3.11 environment; see README.md.
 # GPU inference requires a compatible NVIDIA driver and CUDA build.
 -r requirements-analysis.txt

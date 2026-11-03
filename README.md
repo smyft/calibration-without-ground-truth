@@ -28,19 +28,33 @@ python -m pip check
 | vllm | 0.26.0 |
 | mistral-common | 1.11.7 |
 
-`requirements.txt` includes the full dependency list;
-`requirements-analysis.txt` contains the dependencies for analysis of saved predictions.
+`requirements.txt` includes the dependencies for the full experiment pipeline.
 
-## Supported models and datasets
+## Hugging Face inputs
 
-| Model | Identifier | Directory under `MODEL_ROOT` |
+### Model downloads
+
+Download the six checkpoints below from Hugging Face and save each complete
+checkpoint in the indicated directory under `MODEL_ROOT`. With the
+`MODEL_ROOT="$PWD/models"` setting used below, these directories are under
+`models/` in the repository root. Include the weights, configuration, and
+tokenizer files, and complete the downloads before enabling the offline settings
+in the next section. Obtain access to gated repositories where required.
+
+| Hugging Face download repository | CLI identifier | Directory under `MODEL_ROOT` |
 | --- | --- | --- |
-| Qwen3-8B Base | `Qwen/Qwen3-8B-Base` | `Qwen3-8B-Base/` |
-| Qwen3-8B Instruct | `Qwen/Qwen3-8B` | `Qwen3-8B/` |
-| LLaMA-3.1-8B Base | `meta-llama/Llama-3.1-8B` | `Llama-3.1-8B/` |
-| LLaMA-3.1-8B Instruct | `meta-llama/Llama-3.1-8B-Instruct` | `Llama-3.1-8B-Instruct/` |
-| Ministral-3-8B Base | `mistralai/Ministral-3-8B-Base-2512` | `Ministral-3-8B-Base-2512/` |
-| Ministral-3-8B Instruct | `mistralai/Ministral-3-8B-Instruct-2512` | `Ministral-3-8B-Instruct-2512-BF16/` |
+| [Qwen/Qwen3-8B-Base](https://huggingface.co/Qwen/Qwen3-8B-Base) | `Qwen/Qwen3-8B-Base` | `Qwen3-8B-Base/` |
+| [Qwen/Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B) | `Qwen/Qwen3-8B` | `Qwen3-8B/` |
+| [meta-llama/Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B) | `meta-llama/Llama-3.1-8B` | `Llama-3.1-8B/` |
+| [meta-llama/Llama-3.1-8B-Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) | `meta-llama/Llama-3.1-8B-Instruct` | `Llama-3.1-8B-Instruct/` |
+| [mistralai/Ministral-3-8B-Base-2512](https://huggingface.co/mistralai/Ministral-3-8B-Base-2512) | `mistralai/Ministral-3-8B-Base-2512` | `Ministral-3-8B-Base-2512/` |
+| [mistralai/Ministral-3-8B-Instruct-2512-BF16](https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-BF16) | `mistralai/Ministral-3-8B-Instruct-2512` | `Ministral-3-8B-Instruct-2512-BF16/` |
+
+For Ministral Instruct, download the **BF16** checkpoint while retaining the
+CLI identifier without `-BF16` shown above. The code maps that identifier to the
+BF16 directory; use the CLI identifier in the experiment commands.
+
+### Dataset sources and splits
 
 | Dataset | CLI identifier | Dataset repository | Calibration split | Evaluation split |
 | --- | --- | --- | --- | --- |
@@ -401,3 +415,14 @@ python -m src.calculating_standard_errors.calculate_smooth_ece \
 
 SmoothECE expects the complete three-model, three-dataset comparison exports.
 All commands support `--help` for their full argument lists.
+
+## License and third-party acknowledgments
+
+Original code and documentation in this repository are released under the
+[MIT License](LICENSE). Third-party components retain their respective licenses.
+The adapted SmoothECE implementation in `src/third_party/relplot_smece.py` comes
+from [Apple's ml-calibration](https://github.com/apple/ml-calibration) and is
+covered by the included
+[Apple license](src/third_party/APPLE_ML_CALIBRATION_LICENSE.txt).
+External datasets and model checkpoints remain subject to their original
+licenses and terms of use.
