@@ -418,6 +418,25 @@ python -m src.calculating_standard_errors.calculate_smooth_ece \
 SmoothECE expects the complete three-model, three-dataset comparison exports.
 All commands support `--help` for their full argument lists.
 
+### 7. Saved projection diagnostics
+
+Run after steps 2 and 4:
+
+```bash
+python -m src.experiments.analyze_projection_ties \
+  --diagnostics-dir "$ANALYSIS_DIR/main/diagnostics" "$ANALYSIS_DIR/precision/diagnostics" \
+  --output-dir "$RUN_DIR/projection-ties-001" \
+  --thresholds 1e-10 1e-8 1e-6 1e-4
+```
+
+| Parameter | Meaning |
+| --- | --- |
+| `--diagnostics-dir` | One or more directories of saved projection diagnostic JSON files |
+| `--output-dir` | New directory for `summary.csv` and `suspect_reports.json`; existing directories are refused |
+| `--thresholds` | Positive absolute probability thresholds; defaults to the four values above |
+| `--default-bin-width` | Optional documented width for inputs without a `__s-<width>` filename suffix; otherwise recorded as missing |
+| `--metadata-source` | Original run file supporting the caller-supplied default width; required together with `--default-bin-width` |
+
 ## License and third-party acknowledgments
 
 Original code and documentation in this repository are released under the
